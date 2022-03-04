@@ -1,26 +1,42 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <v-app>
+      <!-- <DrawerMobile /> -->
+      <!-- <AppBar /> -->
+      <Drawer />
+    <v-main>
+      <v-card>
+        <!-- <router-view></router-view> -->
+      </v-card>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// // import DrawerMobile from "@/layout/DrawerMobile.vue";
+// import AppBar from "@/layout/AppBar.vue";
+import Drawer from "@/layout/Drawer.vue";
+import { ref } from 'vue'
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    // DrawerMobile,
+    // AppBar,
+    Drawer,
+  },
+  setup () {
+    const theme = ref('light')
+
+    return {
+      theme,
+      toggleTheme: () => theme.value = theme.value === 'light' ? 'dark' : 'light'
+    }
   }
-}
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+
+@import '@/assets/style.css';
+
 </style>
